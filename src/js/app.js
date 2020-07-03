@@ -36,7 +36,7 @@ App = {
   },
 
   initContract: function () {
-    $.getJSON("Adoption.json", function (data) {
+    $.getJSON("idDatabase.json", function (data) {
       // Get the necessary contract artifact file and instantiate it with @truffle/contract
       var ipDatabaseArtifact = data;
       App.contracts.ipDatabase = TruffleContract(ipDatabaseArtifact);
@@ -45,7 +45,7 @@ App = {
       App.contracts.ipDatabase.setProvider(App.web3Provider);
 
       // Use our contract to retrieve and mark the adopted pets
-      return App.markAdopted();
+      // return App.markAdopted();
     });
 
     return App.bindEvents();
@@ -92,7 +92,7 @@ App = {
           ipDb = instance;
 
           // Execute adopt as a transaction by sending account
-          return ipDb.addEntry(fingerprint);
+          return ipDb.addCopyright(fingerprint);
         })
         .then(function (result) {
           // return App.markAdopted();
